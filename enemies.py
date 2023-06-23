@@ -11,8 +11,6 @@ enemies = {0: {'name': 'Goblin', 'hit_points': 50, 'loot': {100: 'bones', 50: 's
 def add_enemy(id, name, hit_points, loot, strength, accuracy):
     enemies[id] = {'name':name, 'hit_points': hit_points, 'loot': loot, 'strength': strength, 'accuracy': accuracy}
 
-#add_enemy(4, 'Larry', 50, {100: 'junk'}, 40, 30)
-
 
 # Fight-related functions:
 def enemy_turn(enemy, player):
