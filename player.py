@@ -5,4 +5,4 @@ class player:
     accuracy = 8
     hit_points = 150
     strength = 15
-    inventory = []
+    inventory = ['potion', 'potion', 'potion']
