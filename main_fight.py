@@ -24,6 +24,7 @@ print("\nLet the battle commence..")
 class PlayerMove(Enum):
     HEAL = 'h'
     ATTACK = 'a'
+    DEFEND = 'd'
 
 # The entire fight happens within this while loop. (While both the player and enemy are alive/ have above 0 hp)
 while (player.hit_points > 0) and (enemy['hit_points'] > 0):
@@ -60,11 +61,12 @@ while (player.hit_points > 0) and (enemy['hit_points'] > 0):
             print("You missed!")
         
         print(f"({enemy['name']} - {enemy['hit_points']} hit points remaining.)\n")
-
-
-    # ENEMY TURN - This rolls the enemy hit chance based on their accuracy,
-    # and if they hit it rolls how much they hit based on their strength.
-    enemies.enemy_turn(enemy, player)
+    elif player_move == PlayerMove.DEFEND.value:
+        print('You defend yourself.\n')
+        enemies.enemy_turn(enemy, player, 'defend')
+        continue
+    
+    enemies.enemy_turn(enemy, player, None)
 
 
 # You died.
