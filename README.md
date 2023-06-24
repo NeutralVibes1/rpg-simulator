@@ -1,5 +1,5 @@
 # rpg-simulator
-### An RPG fight simulator with basic interactivity
+An RPG fight simulator with basic interactivity
 
 ## The player.py file contains all info on the player character
 
