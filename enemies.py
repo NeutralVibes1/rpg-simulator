@@ -13,23 +13,23 @@ def add_enemy(id, name, hit_points, loot, strength, accuracy):
 
 
 # Fight-related functions:
-def enemy_turn(enemy, player):
+def enemy_turn(enemy, player, defend):
     enemy_hit_chance = (random.choice(range(0, enemy['accuracy'])))
+    if defend == 'defend':
+        enemy_hit_chance -= (enemy['accuracy'] / 4)
     enemy_hit = enemy_hit_chance >= (enemy['accuracy'] / 2)
     enemy_hit_pwr = random.choice(range(1, enemy['strength']))
        
     if enemy_hit:
-        print(enemy['name'], "hit a " + str(enemy_hit_pwr))
+        print(f"{enemy['name']} hit a {enemy_hit_pwr}")
         player.hit_points = player.hit_points - enemy_hit_pwr
 
         if player.hit_points <= 0:
             print("You have died.\n")
-        else:
-            print('(' + player.name, "-", str(player.hit_points) + " hit points remaining.)\n")
-    
-    if enemy_hit is False:
-        print(enemy['name'], "Missed!")
-        print('(' + player.name, "-", str(player.hit_points) + " hit points remaining.)\n")
+    else:
+        print(f"{enemy['name']} Missed!")
+        
+    print(f"({player.name} - {player.hit_points} hit points remaining.)\n")
 
 
 def looting(enemy, player):
@@ -40,7 +40,7 @@ def looting(enemy, player):
         chance = item[0]
         item = item[1]
         if roll <= chance:
-            print('You found ' + item)
+            print(f'You found {item}')
             player.inventory.append(item)
 
     print(player.inventory)
